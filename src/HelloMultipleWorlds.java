@@ -11,12 +11,15 @@ public class HelloMultipleWorlds extends Thread {
 
 	public void run() {
 		synchronized (mutex) {
-
 			for (int i = 0; i < 20; i++) {
-				if(lineCounter < 128)
-					System.out.println("["+ lineCounter++ +"] Hello from " + world + " world!");
+				if (lineCounter < 128) {
+					System.out.println("[" + lineCounter++ + "] Hello from " + world + " world!");
+				}
+				else {
+					break;
+				}
 			}
-
+			System.out.println(world + " world finished!");
 		}
 	}
 }
