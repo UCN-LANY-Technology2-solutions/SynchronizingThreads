@@ -2,7 +2,10 @@
 public class HelloMultipleWorlds extends Thread {
 
 	private String world;
+	// we have to use a static object for the mutex here, since we cannot use the class instances 
+	// because they cannot see each other and therefore is not shared. A static object is.
 	private static Object mutex = new Object();
+	// The line counter is also static, so it can be shared across instances of this class
 	private static int lineCounter = 0;
 
 	public HelloMultipleWorlds(String world) {
@@ -10,13 +13,15 @@ public class HelloMultipleWorlds extends Thread {
 	}
 
 	public void run() {
-		synchronized (mutex) {
+		synchronized (mutex) { 
 			for (int i = 0; i < 20; i++) {
-				if (lineCounter < 128) {
+				if (lineCounter < 128) { 
 					System.out.println("[" + lineCounter++ + "] Hello from " + world + " world!");
+
+					// You can put in a delay here, but it really is not necessary
 				}
 				else {
-					break;
+					break; // break the loop, when the maximum number of rows is reached
 				}
 			}
 			System.out.println(world + " world finished!");

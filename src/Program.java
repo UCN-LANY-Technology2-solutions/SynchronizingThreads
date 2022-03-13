@@ -2,6 +2,7 @@ public class Program {
 
 	public static void main(String[] args) {
 		
+		// This program creates ten threads by instantiating ten instances of the HelloMultipleWorlds class		
 		HelloMultipleWorlds world1 = new HelloMultipleWorlds("first");
 		HelloMultipleWorlds world2 = new HelloMultipleWorlds("second");
 		HelloMultipleWorlds world3 = new HelloMultipleWorlds("third");
@@ -23,6 +24,8 @@ public class Program {
 		world8.start();
 		world9.start();
 		world10.start();
+		
+		System.out.println("All worlds started");
 	}
 
 }
